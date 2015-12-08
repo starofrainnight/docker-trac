@@ -48,6 +48,7 @@ ADD files/entrypoint.sh /usr/local/bin/
 
 RUN chmod a+x /usr/local/bin/*.sh
 
+VOLUME /srv/trac
 EXPOSE 80
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
