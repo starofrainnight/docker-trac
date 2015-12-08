@@ -20,6 +20,7 @@ RUN pip install pisa
 # For tracwikiprintplugin, previous python-pil and python-reportlab also needs for this.
 RUN pip install xhtml2pdf
 RUN pip install pypdf
+# Latest version can't work with 0.12.x
 RUN pip install pygments==1.6
 RUN pip install pytz
 RUN pip install docutils
@@ -34,6 +35,7 @@ RUN easy_install -Z -U http://trac-hacks.org/svn/xmlrpcplugin/trunk
 RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
 RUN easy_install https://github.com/itota/trac-subtickets-plugin/zipball/master
+# Latest version can't work with 0.12.x
 RUN wget --no-check-certificate -O fullblogplugin.zip https://trac-hacks.org/browser/fullblogplugin/0.11\?rev=14774\&format=zip \
     && easy_install fullblogplugin.zip && rm fullblogplugin.zip
 RUN easy_install -Z -U https://trac-hacks.org/svn/tracjsganttplugin/0.11/
