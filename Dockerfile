@@ -31,7 +31,7 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/tracwikiprintplugin/0.11
 RUN pip install TracAccountManager
 RUN pip install TracPrivateTickets
 RUN pip install TracMasterTickets
-RUN easy_install -Z -U http://trac-hacks.org/svn/xmlrpcplugin/trunk
+RUN easy_install -Z -U https://trac-hacks.org/svn/xmlrpcplugin/trunk
 RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
 RUN easy_install https://github.com/itota/trac-subtickets-plugin/zipball/master
