@@ -6,6 +6,7 @@ ENV LANG C.UTF-8
 RUN apt-get update && apt-get install -y \
     wget \
     subversion \
+    apache2-utils \
     python \
     python-pil \
     python-reportlab \
