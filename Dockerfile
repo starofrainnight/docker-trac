@@ -14,6 +14,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \
     && rm get-pip.py
 
+RUN pip install -U setuptools
 RUN pip install pillow
 RUN pip install reportlab
 RUN pip install html5lib
