@@ -8,14 +8,15 @@ RUN apt-get update && apt-get install -y \
     subversion \
     apache2-utils \
     python \
-    python-pil \
-    python-reportlab \
     && apt-get clean
 
 RUN wget https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \
     && rm get-pip.py
 
+RUN pip install pillow
+RUN pip install reportlab
+RUN pip install html5lib
 RUN pip install pisa
 
 # For tracwikiprintplugin, previous python-pil and python-reportlab also needs for this.
