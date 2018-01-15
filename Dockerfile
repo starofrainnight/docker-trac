@@ -46,6 +46,7 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/virtualticketpermissionsplugin
 RUN easy_install -Z -U https://trac-hacks.org/svn/tracwysiwygplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/timingandestimationplugin/branches/trac0.12-Permissions/
 RUN easy_install -Z -U https://trac-hacks.org/svn/ccselectorplugin/trunk/
+RUN easy_install -Z -U https://trac-hacks.org/svn/svnauthzadminplugin/0.12/
 
 ADD files/entrypoint.sh /usr/local/bin/
 
