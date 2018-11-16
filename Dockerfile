@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 MAINTAINER Hong-She Liang <starofrainnight@gmail.com>
 
 ENV LANG C.UTF-8
@@ -31,9 +31,10 @@ RUN pip install babel
 
 RUN pip install trac==0.12.7
 RUN easy_install -Z -U https://trac-hacks.org/svn/tracwikiprintplugin/0.11
-RUN pip install TracAccountManager
-RUN pip install TracPrivateTickets
-RUN pip install TracMasterTickets
+# Trac<1.0, avoid issue: No handler matched request to /login
+RUN pip install TracAccountManager==0.4.4
+RUN pip install TracPrivateTickets==2.3.0
+RUN pip install TracMasterTickets==4.0.2
 RUN easy_install -Z -U https://trac-hacks.org/svn/xmlrpcplugin/trunk
 RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
