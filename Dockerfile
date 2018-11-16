@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     subversion \
     apache2-utils \
     python \
+    nano \
+    patch \
     && apt-get clean
 
 RUN wget https://bootstrap.pypa.io/get-pip.py \
@@ -15,6 +17,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
     && rm get-pip.py
 
 RUN pip install -U setuptools
+RUN easy_install -U pip
 RUN pip install pillow
 RUN pip install reportlab
 RUN pip install html5lib
@@ -34,7 +37,7 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/tracwikiprintplugin/0.11
 # Trac<1.0, avoid issue: No handler matched request to /login
 RUN pip install TracAccountManager==0.4.4
 RUN pip install TracPrivateTickets==2.3.0
-RUN pip install TracMasterTickets==4.0.2
+RUN pip install TracMasterTickets==3.0.1
 RUN easy_install -Z -U https://trac-hacks.org/svn/xmlrpcplugin/trunk
 RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
@@ -50,6 +53,11 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/ccselectorplugin/trunk/
 RUN easy_install -Z -U https://trac-hacks.org/svn/svnauthzadminplugin/0.12/
 
 ADD files/entrypoint.sh /usr/local/bin/
+
+# Fix libraries
+ADD files/patches /tmp/patches
+RUN cd /tmp/patches && chmod +x *.sh && ./apply-patch.sh
+RUN rm -rf /tmp/patches
 
 RUN chmod a+x /usr/local/bin/*.sh
 
