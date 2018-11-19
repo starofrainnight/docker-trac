@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     python \
     nano \
     patch \
+    # TracMasterTickets degraph support
+    python-pydot python-pydot-ng graphviz \
     && apt-get clean
 
 RUN wget https://bootstrap.pypa.io/get-pip.py \
