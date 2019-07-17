@@ -20,6 +20,8 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
 
 RUN pip install -U setuptools
 RUN easy_install -U pip
+RUN pip install -U wheel
+RUN pip install virtualenv
 RUN pip install pillow
 RUN pip install reportlab
 RUN pip install html5lib
