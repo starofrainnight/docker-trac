@@ -21,6 +21,7 @@ RUN pip install -U setuptools
 RUN easy_install -U pip
 RUN pip install -U wheel
 RUN pip install virtualenv
+
 RUN pip install pillow
 RUN pip install reportlab
 RUN pip install html5lib
@@ -57,13 +58,11 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/svnauthzadminplugin/0.12/
 
 RUN mkdir /opt/docker-trac
 ADD files/entrypoint.sh /opt/docker-trac/entrypoint.sh
+RUN chmod a+x /opt/docker-trac/*.sh
 
 # Fix libraries
 ADD files/patches /tmp/patches
-RUN cd /tmp/patches && chmod +x *.sh && ./apply-patch.sh
-RUN rm -rf /tmp/patches
-
-RUN chmod a+x /opt/docker-trac/*.sh
+RUN cd /tmp/patches && chmod +x *.sh && ./apply-patch.sh && rm -rf /tmp/patches
 
 VOLUME /srv/trac
 EXPOSE 80
