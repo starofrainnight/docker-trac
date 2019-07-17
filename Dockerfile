@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Hong-She Liang <starofrainnight@gmail.com>
+LABEL maintainer="Hong-She Liang <starofrainnight@gmail.com>"
 
 ENV LANG C.UTF-8
 
