@@ -1,6 +1,5 @@
 FROM ubuntu:18.04
 LABEL maintainer="Hong-She Liang <starofrainnight@gmail.com>"
-
 ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install -y \
@@ -56,16 +55,17 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/timingandestimationplugin/bran
 RUN easy_install -Z -U https://trac-hacks.org/svn/ccselectorplugin/trunk/
 RUN easy_install -Z -U https://trac-hacks.org/svn/svnauthzadminplugin/0.12/
 
-ADD files/entrypoint.sh /usr/local/bin/
+RUN mkdir /opt/docker-trac
+ADD files/entrypoint.sh /opt/docker-trac/entrypoint.sh
 
 # Fix libraries
 ADD files/patches /tmp/patches
 RUN cd /tmp/patches && chmod +x *.sh && ./apply-patch.sh
 RUN rm -rf /tmp/patches
 
-RUN chmod a+x /usr/local/bin/*.sh
+RUN chmod a+x /opt/docker-trac/*.sh
 
 VOLUME /srv/trac
 EXPOSE 80
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/opt/docker-trac/entrypoint.sh"]
