@@ -13,12 +13,13 @@ RUN apt-get update && apt-get install -y \
     python-pydot python-pydot-ng graphviz \
     && apt-get clean
 
-RUN wget https://bootstrap.pypa.io/get-pip.py \
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py \
     && python get-pip.py \
     && rm get-pip.py
 
 RUN pip install -U setuptools
-RUN easy_install -U pip
+# We can't upgrade to latest pip (it does not support python3 already!)
+# RUN easy_install -U pip
 RUN pip install -U wheel
 RUN pip install virtualenv
 
@@ -28,7 +29,7 @@ RUN pip install html5lib
 RUN pip install pisa
 
 # For tracwikiprintplugin, previous python-pil and python-reportlab also needs for this.
-RUN pip install xhtml2pdf
+RUN pip install xhtml2pdf==0.2.5
 RUN pip install pypdf
 # Latest version can't work with 0.12.x
 RUN pip install pygments==1.6
@@ -37,7 +38,7 @@ RUN pip install docutils
 RUN pip install babel
 
 RUN pip install trac==0.12.7
-RUN easy_install -Z -U https://trac-hacks.org/svn/tracwikiprintplugin/0.11
+RUN easy_install -Z -U https://trac-hacks.org/svn/tracwikiprintplugin/trunk
 # Trac<1.0, avoid issue: No handler matched request to /login
 RUN pip install TracAccountManager==0.4.4
 RUN pip install TracPrivateTickets==2.3.0
