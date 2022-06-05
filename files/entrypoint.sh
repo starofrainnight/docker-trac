@@ -16,6 +16,5 @@ fi
 
 virtualenv --relocatable $ENV_DIR
 
-source $ENV_DIR/bin/activate
-
+# source $ENV_DIR/bin/activate
 python /usr/local/bin/tracd --basic-auth="*,$BASE_DIR/passwd,trac" -e $BASE_DIR
