@@ -10,11 +10,10 @@ else
     echo "Python user virtual environment not exists! Creating ..."
 
     # Create virtualenv environment
-    virtualenv --system-site-packages $ENV_DIR
+    virtualenv --copies --system-site-packages $ENV_DIR
 
 fi
 
-virtualenv --relocatable $ENV_DIR
+source $ENV_DIR/bin/activate
 
-# source $ENV_DIR/bin/activate
 python /usr/local/bin/tracd --basic-auth="*,$BASE_DIR/passwd,trac" -e $BASE_DIR
