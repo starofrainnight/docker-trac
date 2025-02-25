@@ -54,7 +54,7 @@ RUN python -m easy_install -Z -U https://trac-hacks.org/svn/xmlrpcplugin/trunk
 # deprecated, use custom fields instead
 # RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 # unmaintained
-# RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
+RUN python -m easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/1.0/
 # RUN python -m easy_install https://github.com/itota/trac-subtickets-plugin/zipball/master
 RUN python -m easy_install https://github.com/itota/trac-subtickets-plugin/archive/refs/heads/master.zip
 # Latest version can't work with 0.12.x
