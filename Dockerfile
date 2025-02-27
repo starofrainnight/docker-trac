@@ -26,11 +26,17 @@ RUN pip install virtualenv
 RUN pip install pillow
 RUN pip install reportlab
 RUN pip install html5lib
-RUN pip install pisa
+# No pisa supports python2.7 already
+# RUN pip install pisa
 
+# xhtml2pdf depends
+RUN pip install python-bidi==0.4.2
+RUN pip install maturin==0.7.6
+
+# RUN pip install PyPDF2==1.27.12
 # For tracwikiprintplugin, previous python-pil and python-reportlab also needs for this.
 RUN pip install xhtml2pdf==0.2.5
-RUN pip install pypdf
+RUN pip install pypdf==1.13
 # Latest version can't work with 0.12.x
 RUN pip install pygments==1.6
 RUN pip install pytz
@@ -48,8 +54,7 @@ RUN easy_install -Z -U https://trac-hacks.org/svn/datefieldplugin/0.12/
 RUN easy_install -Z -U https://trac-hacks.org/svn/discussionplugin/0.11/
 RUN easy_install https://github.com/itota/trac-subtickets-plugin/zipball/master
 # Latest version can't work with 0.12.x
-RUN wget --no-check-certificate -O fullblogplugin.zip https://trac-hacks.org/browser/fullblogplugin/0.11\?rev=14774\&format=zip \
-    && easy_install fullblogplugin.zip && rm fullblogplugin.zip
+RUN easy_install -Z -U https://trac-hacks.org/svn/fullblogplugin/0.11/
 RUN easy_install -Z -U https://trac-hacks.org/svn/tracjsganttplugin/0.11/
 RUN easy_install -Z -U https://trac-hacks.org/svn/virtualticketpermissionsplugin/trunk/
 RUN easy_install -Z -U https://trac-hacks.org/svn/tracwysiwygplugin/0.12/
